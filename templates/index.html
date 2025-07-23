@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Heart Failure Prediction</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f3f3f3;
+            padding: 30px;
+        }
+        .container {
+            max-width: 600px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+        }
+        input {
+            width: 100%;
+            padding: 8px;
+            margin: 5px 0 15px 0;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 12px;
+            border: none;
+            width: 100%;
+            border-radius: 4px;
+        }
+        .result {
+            margin-top: 20px;
+            font-size: 1.2em;
+            color: darkblue;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h2>Heart Failure Risk Prediction</h2>
+    <form method="POST" action="/predict">
+        <label>Age</label>
+        <input type="number" step="any" name="age" required>
+
+        <label>Anaemia (1=yes, 0=no)</label>
+        <input type="number" name="anaemia" min="0" max="1" required>
+
+        <label>Creatinine Phosphokinase</label>
+        <input type="number" name="creatinine_phosphokinase" required>
+
+        <label>Diabetes (1=yes, 0=no)</label>
+        <input type="number" name="diabetes" min="0" max="1" required>
+
+        <label>Ejection Fraction</label>
+        <input type="number" name="ejection_fraction" required>
+
+        <label>High Blood Pressure (1=yes, 0=no)</label>
+        <input type="number" name="high_blood_pressure" min="0" max="1" required>
+
+        <label>Platelets</label>
+        <input type="number" step="any" name="platelets" required>
+
+        <label>Serum Creatinine</label>
+        <input type="number" step="any" name="serum_creatinine" required>
+
+        <label>Serum Sodium</label>
+        <input type="number" name="serum_sodium" required>
+
+        <label>Sex (1=Male, 0=Female)</label>
+        <input type="number" name="sex" min="0" max="1" required>
+
+        <label>Smoking (1=yes, 0=no)</label>
+        <input type="number" name="smoking" min="0" max="1" required>
+
+        <label>Follow-up Time (in days)</label>
+        <input type="number" name="time" required>
+
+        <button type="submit">Predict</button>
+    </form>
+
+    {% if prediction_text %}
+    <div class="result">
+        <p>{{ prediction_text }}</p>
+    </div>
+    {% endif %}
+</div>
+</body>
+</html>
